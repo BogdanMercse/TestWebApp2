@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/angularScripts.js"></script>
+<center>
+    <h2>Customers and Requests</h2>
+    <div ng-app="MyApp" ng-controller="MyController" ng-init="GetCustomerNames()">
+        <h3>Customer table</h3>
+        <hr />
+        <table border="1">
+            <tr>
+                <th>Customer id</th>
+                <th>Customer name</th>
+                <th>Customer email</th>
+                <th>Customer phone</th>
+                <th>Actions</th>
+
+            </tr>
+            <tr ng-repeat="x in customerList">
+                <td>{{x.customerId}}</td>
+                <td>{{x.customerName}}</td>
+                <td>{{x.customerEmail}}</td>
+                <td>{{x.customerPhone}}</td>
+                <td>
+                    <input type="button" class="btn btn-danger" value="Delete" ng-click="DeleteCustomer(x.customerId)" />  
+                    <input type="button" class="btn btn-warning" value="Update" ng-click="ShowUpdateForm(x)" /> 
+                </td>
+            </tr>
+        </table>
+
+        <h3>Mosquito net requests</h3>
+        <hr />
+        <table border="1">
+            <tr>
+                <th>Customer id</th>
+                <th>Length</th>
+                <th>Height</th>
+            </tr>
+            <tr ng-repeat="request in mosquitoNetRequestsList">
+                <td>{{request.customerId}}</td>
+                <td>{{request.length}}</td>
+                <td>{{request.height}}</td>
+            </tr>
+        </table>
+
+        <hr />
+        <div ng-show="updateFormVisible==false">
+           
+            <h3>Add a customer</h3>
+            <div class="form-group">               
+                    <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="customerName">
+                    <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="customerEmail">
+                    <input type="text" class="form-control" id="inputPhone" placeholder="Phone" ng-model="customerPhone">
+                    <input type="text" class="form-control" id="inputLength" placeholder="Length" ng-model="mosquitoNetLength">
+                    <input type="text" class="form-control" id="inputHeight" placeholder="Height" ng-model="mosquitoNetHeight">
+                    <input type="button" class="btn btn-success" value="Add" ng-click="CreateCustomer(x)" />               
+            </div>
+        </div>
+
+        <div ng-show="updateFormVisible">
+             <h3>Update a customer</h3>
+             <div class="form-group">                 
+                     <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="customerNameUpdate">
+                     <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="customerEmailUpdate">
+                     <input type="text" class="form-control" id="inputPhone" placeholder="Phone" ng-model="customerPhoneUpdate">
+                     <input type="button" class="btn btn-success" value="Update" ng-click="UpdateCustomer(x)" />
+             </div>
+        </div>
+    </div>
+
+   
+</center>
+
+@*@section Footer
+{
+   <footer>
+     <p>&copy; @DateTime.Now.Year - MosquitoNet Application</p>
+   </footer>
+}*@
+
+

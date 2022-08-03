@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MosquitoNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="customerId" />
+    </Key>
+    <Property Name="customerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="customerEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="customerPhone" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MosquitoNet.dbo.MosquitoNetRequests' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MosquitoNetRequests">
+    <Key>
+      <PropertyRef Name="customerId" />
+      <PropertyRef Name="length" />
+      <PropertyRef Name="height" />
+    </Key>
+    <Property Name="customerId" Type="int" Nullable="false" />
+    <Property Name="length" Type="float" Nullable="false" />
+    <Property Name="height" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MosquitoNetModelStoreContainer">
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MosquitoNetRequests" EntityType="Self.MosquitoNetRequests" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MosquitoNetRequests].[customerId] AS [customerId], 
+    [MosquitoNetRequests].[length] AS [length], 
+    [MosquitoNetRequests].[height] AS [height]
+    FROM [dbo].[MosquitoNetRequests] AS [MosquitoNetRequests]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

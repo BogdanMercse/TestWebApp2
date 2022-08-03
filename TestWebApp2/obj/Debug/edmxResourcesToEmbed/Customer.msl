@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MosquitoNetModelStoreContainer" CdmEntityContainer="MosquitoNetEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="MosquitoNetModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="customerName" ColumnName="customerName" />
+          <ScalarProperty Name="customerEmail" ColumnName="customerEmail" />
+          <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MosquitoNetRequests">
+      <EntityTypeMapping TypeName="MosquitoNetModel.MosquitoNetRequest">
+        <MappingFragment StoreEntitySet="MosquitoNetRequests">
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="length" ColumnName="length" />
+          <ScalarProperty Name="height" ColumnName="height" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
